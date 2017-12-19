@@ -1,0 +1,10 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flask demo</title>
+</head>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/index.css') }}">
+<div class=page>
+    {% block body %}
+    {% endblock %}
+</div>
