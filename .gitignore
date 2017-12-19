@@ -2,3 +2,4 @@
 /target
 test
 face_recognize/static/model
+config.py
