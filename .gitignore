@@ -2,4 +2,5 @@
 /target
 test
 face_recognize/static/model
+face_recognize/static/layui
 config.py

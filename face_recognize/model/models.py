@@ -14,6 +14,7 @@ class Image(Base):
     url = Column(String(100), nullable=False)
     tester_id = Column(Integer)
     upload_time = Column(DateTime, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
+    valid = Column(Integer, nullable=False, server_default=int(1))
 
 
 class Tester(Base):

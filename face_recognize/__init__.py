@@ -14,8 +14,5 @@ def create_app(config_name):
     config[config_name].init_app(app)
     print(config_name + ' mode on.')
     db.init_app(app)
-    print('database initialized.')
     app.register_blueprint(controller)
-    print('controller registered.')
-    print('application initialized.')
     return app

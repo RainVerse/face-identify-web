@@ -1,10 +1,30 @@
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>flask demo</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
+    <title>{% block title %}{% endblock %}--RainLab</title>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='layui/css/layui.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/index.css') }}">
+    {% block css %}
+    {% endblock %}
 </head>
-<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/index.css') }}">
-<div class=page>
+<body>
+{% include "common/nav.html" %}
+<div class="background-div layui-hide-xs">
+    <img class="background-img" src="{{ url_for('static', filename='image/bg1.png') }}"/>
+</div>
+<div class="main-body">
     {% block body %}
     {% endblock %}
 </div>
+{% include "common/footer.html" %}
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='layui/layui.js') }}"></script>
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+{% block js %}
+{% endblock %}
+</body>
+</html>
