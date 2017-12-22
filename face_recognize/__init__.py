@@ -17,4 +17,4 @@ db.init_app(app)
 app.register_blueprint(controller)
 
 app_config = app.config
-deep_id_validator = deep_id_validator(app_config['FILE_BASE_PATH'] + '\model\deep_id')
+deep_id_validator = deep_id_validator(app_config['FILE_BASE_PATH'] + '/model/deep_id')
