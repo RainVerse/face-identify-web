@@ -4,7 +4,34 @@
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/deep_id.css') }}">
 {% endblock %}
 {% block body %}
-body
+<div style="border:2px solid #e5e5e5;margin: 35px 5px;padding:5px">
+    <h2 style="margin-top:-1rem;text-align: center"><span
+            style="background-color: #fff;padding: 0 1.5rem;">Deep ID 人脸验证网络</span></h2>
+    <p>输入两张图片验证是否为同一个人</p>
+</div>
+<div id="pic-upload" style="padding-bottom: 20px;clear: both;">
+    <form enctype="multipart/form-data" id="img-upload-form" class="layui-form">
+        <img id="preview-img1" style="width: 48%;height: 45%" class="layui-hide"/>
+        <img id="preview-img2" style="width: 48%;height: 45%" class="layui-hide"/>
+        <div class="layui-form-item">
+            <label class="layui-form-label">图片1</label>
+            <div class="layui-input-block">
+                <input name="file1" type="file" id="img-input1" accept="image/*" multiple required/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">图片2</label>
+            <div class="layui-input-block">
+                <input name="file2" type="file" id="img-input2" accept="image/*" multiple required/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="img-upload-btn">立即提交</button>
+            </div>
+        </div>
+    </form>
+</div>
 {% endblock %}
 {% block js %}
 <script src="{{ url_for('static', filename='js/deep_id.js') }}"></script>
