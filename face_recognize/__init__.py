@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 from config import config
+from .service.deep_id_validator import deep_id_validator
 
 db = SQLAlchemy()
 
@@ -16,3 +17,4 @@ db.init_app(app)
 app.register_blueprint(controller)
 
 app_config = app.config
+deep_id_validator = deep_id_validator(app_config['FILE_BASE_PATH'] + '\model\deep_id')
