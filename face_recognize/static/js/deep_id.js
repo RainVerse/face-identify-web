@@ -29,8 +29,11 @@ layui.use('form', function () {
             success: function (retJson) {
                 var ret = JSON.parse(retJson);
                 layer.closeAll('loading');
-                console.log(ret);
-                layer.msg(ret.result.toString());
+                if (ret.status) {
+                    layer.msg(ret.result.toString());
+                } else {
+                    layer.msg(ret.message);
+                }
             },
             error: function (retJson) {
                 layer.closeAll('loading');

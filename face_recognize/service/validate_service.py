@@ -7,12 +7,14 @@ import tensorflow as tf
 
 
 def detect(filename, model_base_path):
+    print(filename)
     cascade_file = model_base_path + '/haarcascade/haarcascade_frontalface_alt.xml'
     if not os.path.isfile(cascade_file):
         raise RuntimeError("%s: not found" % cascade_file)
 
     cascade = cv2.CascadeClassifier(cascade_file)
     image = cv2.imread(filename)
+    print(image.shape)
 
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     gray = cv2.equalizeHist(gray)
@@ -21,6 +23,8 @@ def detect(filename, model_base_path):
                                      scaleFactor=1.1,
                                      minNeighbors=3,
                                      minSize=(47, 55))
+    if len(faces) == 0:
+        return None
     for i, (x, y, w, h) in enumerate(faces):
         face = image[y: y + h, x:x + w, :]
         face = cv2.resize(face, (47, 55))
@@ -38,6 +42,8 @@ def verify(A, G, x1, x2):
 def validate(image1, image2, model_base_path):
     pic1 = detect(image1, model_base_path)
     pic2 = detect(image2, model_base_path)
+    if pic2 is None or pic1 is None:
+        return False, None
     pic1arr = np.reshape(np.asarray(pic1, dtype='float32'), [1, 55, 47, 3])
     pic2arr = np.reshape(np.asarray(pic2, dtype='float32'), [1, 55, 47, 3])
 

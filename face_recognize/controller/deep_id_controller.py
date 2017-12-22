@@ -21,4 +21,6 @@ def deep_id_img_validate():
     from ..service import validate_service
     model_base_path = app_config['FILE_BASE_PATH'] + '/model/deep_id'
     result, val = validate_service.validate(file1_name, file2_name, model_base_path)
+    if val is None:
+        return json.dumps({'status': False, 'message': '请上传较为明显的人脸图片', 'result': None}, ensure_ascii=False)
     return json.dumps({'status': True, 'message': '上传成功', 'result': result}, ensure_ascii=False)
