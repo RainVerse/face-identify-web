@@ -31,7 +31,7 @@ class deep_id_validator(object):
                                          scaleFactor=1.1,
                                          minNeighbors=3,
                                          minSize=(47, 55))
-        print(len(faces))
+        # print(len(faces))
         if len(faces) != 1:
             return None
         for i, (x, y, w, h) in enumerate(faces):

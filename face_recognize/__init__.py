@@ -8,6 +8,7 @@ db = SQLAlchemy()
 
 from .controller import controller
 
+# config_name = 'development'
 config_name = 'production'
 app = Flask(__name__)
 app.config.from_object(config[config_name])
