@@ -17,8 +17,8 @@ def deep_id_img_validate():
     file1_base_name = str(uuid.uuid4()).replace('-', '') + os.path.splitext(file1.filename)[-1]
     file2_base_name = str(uuid.uuid4()).replace('-', '') + os.path.splitext(file2.filename)[-1]
     from .. import app_config
-    file1_name = os.path.join(app_config['FILE_BASE_PATH'] + '\image\deep_id', file1_base_name)
-    file2_name = os.path.join(app_config['FILE_BASE_PATH'] + '\image\deep_id', file2_base_name)
+    file1_name = os.path.join(app_config['FILE_BASE_PATH'] + '/image/deep_id', file1_base_name)
+    file2_name = os.path.join(app_config['FILE_BASE_PATH'] + '/image/deep_id', file2_base_name)
     file1.save(file1_name)
     file2.save(file2_name)
     from .. import deep_id_validator
@@ -36,10 +36,10 @@ def deep_id_img_validate():
     else:
         cur_id = int(record_data[0]['max(record_index)']) + 1
     print(cur_id)
-    new_dir = app_config['FILE_BASE_PATH'] + '\image\deep_id\\' + str(cur_id)
+    new_dir = app_config['FILE_BASE_PATH'] + '/image/deep_id/' + str(cur_id)
     os.mkdir(new_dir)
-    file1_new_name = new_dir + '\\' + file1_base_name
-    file2_new_name = new_dir + '\\' + file2_base_name
+    file1_new_name = new_dir + '/' + file1_base_name
+    file2_new_name = new_dir + '/' + file2_base_name
     shutil.move(file1_name, file1_new_name)
     shutil.move(file2_name, file2_new_name)
     image1 = Image(url=file1_new_name)
