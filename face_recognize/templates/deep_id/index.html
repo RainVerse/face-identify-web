@@ -8,6 +8,10 @@
     <h2 style="margin-top:-1rem;text-align: center"><span
             style="background-color: #fff;padding: 0 1.5rem;">Deep ID 人脸验证网络</span></h2>
     <p>输入两张图片验证是否为同一个人</p>
+    <p>本项目为基于CNN和联合贝叶斯算法的人脸辨别网络</p>
+    <p>人脸提取模块采用OpenCV自带的人脸识别接口</p>
+    <p>神经网络模块基于DeepID1的网络结构搭建，用于提取人脸图片的特征</p>
+    <p>对提取的特征使用联合贝叶斯算法进行分类和验证，判断是否为同一个人</p>
 </div>
 <div id="pic-upload" style="padding-bottom: 20px;clear: both;">
     <form enctype="multipart/form-data" id="img-upload-form" class="layui-form">
@@ -29,6 +33,9 @@
             <div class="layui-input-block">
                 <button class="layui-btn" lay-submit lay-filter="img-upload-btn">立即提交</button>
             </div>
+        </div>
+        <div hidden id="result-div">
+            <p style="font-size: 150%;padding-left: 30px" id="result-text"></p>
         </div>
     </form>
 </div>

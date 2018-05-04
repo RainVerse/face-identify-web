@@ -1,4 +1,4 @@
-import os.path
+import os
 import pickle
 
 import cv2
@@ -10,11 +10,12 @@ class deep_id_validator(object):
     def __init__(self, model_base_path):
         self.model_base_path = model_base_path
         self.cascade_file = model_base_path + '/haarcascade/haarcascade_frontalface_alt.xml'
-        print(self.cascade_file)
         if not os.path.isfile(self.cascade_file):
             raise RuntimeError("%s: not found" % self.cascade_file)
         saver = tf.train.import_meta_graph(model_base_path + "/deep_id/25000.ckpt.meta")
-        self.deep_id_session = tf.Session()
+        config = tf.ConfigProto()
+        config.gpu_options.allow_growth = True
+        self.deep_id_session = tf.Session(config=config)
         self.input = tf.get_default_graph().get_tensor_by_name('input/x:0')
         self.op_validate = tf.get_default_graph().get_tensor_by_name('DeepID1/validate:0')
         saver.restore(self.deep_id_session, model_base_path + '/deep_id/25000.ckpt')
@@ -57,6 +58,7 @@ class deep_id_validator(object):
         h1 = self.deep_id_session.run(self.op_validate, {self.input: pic1arr})
         h2 = self.deep_id_session.run(self.op_validate, {self.input: pic2arr})
         result = self.verify(h1, h2)
+        print(result)
         if result >= -17.65:
             return True, result
         else:

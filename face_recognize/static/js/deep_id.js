@@ -30,7 +30,8 @@ layui.use('form', function () {
                 var ret = JSON.parse(retJson);
                 layer.closeAll('loading');
                 if (ret.status) {
-                    layer.msg(ret.result.toString());
+                    $('#result-div').show();
+                    $('#result-text').text('验证结果为：' + (ret.result ? '同一个人' : '非同一个人'));
                 } else {
                     layer.msg(ret.message);
                 }
