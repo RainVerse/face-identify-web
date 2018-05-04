@@ -28,7 +28,7 @@ class TestingConfig(Config):
 class ProductionConfig(Config):
     PRODUCTION = True
     SQLALCHEMY_TRACK_MODIFICATIONS = True
-    SQLALCHEMY_DATABASE_URI = "mysql://root:ZZy-1998@127.0.0.1:3306/deep_id"
+    SQLALCHEMY_DATABASE_URI = "mysql://root:ZZy-1998@localhost:3306/deep_id"
     FILE_BASE_PATH = '/root/file_resource'
 
 
