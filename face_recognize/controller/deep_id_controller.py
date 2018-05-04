@@ -50,4 +50,5 @@ def deep_id_img_validate():
     # db.session.add(image2)
     # db.session.add(deepid_record)
     # db.session.commit()
-    return json.dumps({'status': True, 'message': '上传成功', 'result': result, 'id': cur_id}, ensure_ascii=False)
+    # return json.dumps({'status': True, 'message': '上传成功', 'result': result, 'id': cur_id}, ensure_ascii=False)
+    return json.dumps({'status': True, 'message': '上传成功', 'result': result}, ensure_ascii=False)
